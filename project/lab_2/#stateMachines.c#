@@ -4,6 +4,8 @@
 #include "buzzer.h"
 #include "switches.h"
 
+short count0=0, count1=0,count2=0, count3=0;
+
 char unsigned red_on=0, green_on=0, led_changed=0;
 char toggle_red()		/* always toggle! */
 {
