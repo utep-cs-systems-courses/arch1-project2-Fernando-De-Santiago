@@ -3,6 +3,6 @@
 
 
 void state_advance();
-void button_states();
+int button_states();
 
 #endif // included

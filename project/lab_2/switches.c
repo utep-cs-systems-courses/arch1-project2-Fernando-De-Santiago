@@ -33,21 +33,4 @@ switch_interrupt_handler()
   switch_state_down2 = (p2val & SW2) ? 0 : 1;
   switch_state_down3 = (p2val & SW3) ? 0: 1;
   switch_state_changed = 1;
-  if(switch_state_down)
-  {
-    button=0;
-  }
-  else if(switch_state_down1)
-  {
-    button=1;
-  }
-  else if(switch_state_down2)
-  {
-    button=2;
-  }
-  else if(switch_state_down3)
-  {
-    button=3;
-  }
-  led_update();
 }

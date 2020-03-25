@@ -1,6 +1,6 @@
 //Alternate LEDs from Off, Green, and Red
 #include <msp430.h>
-#include "timerLib/libTimer.h"
+#include "libTimer.h"
 #include "led.h"
 #include "buzzer.h"
 #include "switches.h"

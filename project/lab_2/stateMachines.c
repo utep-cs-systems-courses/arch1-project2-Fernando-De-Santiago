@@ -3,7 +3,7 @@
 #include "led.h"
 #include "buzzer.h"
 #include "switches.h"
-
+int Tones[]={1000,200,0,500,2000};
 char unsigned red_on=0, green_on=0, led_changed=0;
 char toggle_red()		/* always toggle! */
 {
@@ -42,22 +42,18 @@ void state_advance()		/* alternate between toggling red & green */
   case R: changed = toggle_red(); color = G; break;
   case G: changed = toggle_green(); color = R; break;
   }
-  
+  int i=0;
   led_changed = changed;
   led_update();
-
-  int counter=0;
-  switch(button_state(counter)){
+  switch(button_states()){
   case 1:
-    buzzer_set_period(1000);
-    buzzer_set_period(0);
-    buzzer_set_period(3000);
+    buzzer_set_period(Tones[i++]);
     break;
   case 2:
     buzzer_set_period(200);
     break;
   case 3:
-    buzzer_set_period(0);
+    buzzer_off();
     break;
   case 4:
     buzzer_set_period(3000);
@@ -65,18 +61,18 @@ void state_advance()		/* alternate between toggling red & green */
     }
 }
 
-int button_state(counter){
+int button_states(){
   if(switch_state_down){
-    counter=1;
+   int counter=1;
     return counter;
   }else if(switch_state_down1){
-    counter=2;
+    int counter=2;
     return counter;
   }else if(switch_state_down2){
-    counter=3;
+    int counter=3;
     return counter;
   }else if(switch_state_down3){
-    counter=4;
+    int counter=4;
     return counter;
   }
 }
