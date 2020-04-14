@@ -3,6 +3,7 @@
 #include "led.h"
 #include "buzzer.h"
 #include "switches.h"
+#include "button.h"
 
 char unsigned red_on=0, green_on=0, led_changed=0;
 
@@ -47,8 +48,8 @@ void state_advance()/* alternate between toggling red & green */
   led_update();
   switch(button_states())
   {
-    case 1://plays tune 1
-      buzzer_set_period(1000);
+    case 1:
+      buzzer_set_period(140);
       break;
     case 2://plays tune 2
       buzzer_set_period(200);
@@ -62,20 +63,19 @@ void state_advance()/* alternate between toggling red & green */
   }
 }
 
-int button_states()
+short button_states()
 {
-  if(switch_state_down)
-  {
+  if(switch_state_down){
     int counter=1;
-    if(counter==button(counter)
-    {
-      return counter;
-    }
+    if(counter==button(counter))
+      {
+	return counter;
+      }
   }
   else if(switch_state_down1)
   {
     int counter=2;
-    if(counter==button(counter)
+    if(counter==button(counter))
     {
       return counter;
     }
@@ -83,7 +83,7 @@ int button_states()
   else if(switch_state_down2)
   {
     int counter=3;
-    if(counter==button(counter)
+    if(counter==button(counter))
     {
       return counter;
     }
@@ -91,7 +91,7 @@ int button_states()
   else if(switch_state_down3)
   {
     int counter=4;
-    if(counter==button(counter)
+    if(counter==button(counter))
     {
       return counter;
     }
